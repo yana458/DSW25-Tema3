@@ -1,0 +1,20 @@
+{
+    "name": "dsw/blog",
+    "description": "Tema 3: Acceso a Datos. Ejemplo Blog",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dsw\\Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yana",
+            "email": "yanachistyakova458@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
