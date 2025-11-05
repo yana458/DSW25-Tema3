@@ -2,8 +2,8 @@
 // Pagina de prueba paea ver todas las variables de entorno. Se debe eliminar en produccion
 use Dotenv\Dotenv;
 
-require_once '../vendor/autoload.php';
 
+require_once 'conexion.php';
 
 //Leer variables de entorno
 $dotenv = Dotenv::createImmutable(__DIR__.'/..');
@@ -33,15 +33,3 @@ try{
     printf("<p>%s</p>", $e->getMessage());
     die();
 }
-
-//echo "Conexión correcta";
-
-//Consulta SQL o manipulación de la base de datos
-if (isset($_GET['id'])){
-    //borrar id
-    $sql = "DELETE FROM users WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $_GET['id']]);
-}
-header('Location: selectall.php');
-exit();

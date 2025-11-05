@@ -3,6 +3,7 @@
 use Dotenv\Dotenv;
 
 require_once '../vendor/autoload.php';
+require_once 'conexion.php';
 
 //Leer variables de entorno
 $dotenv = Dotenv::createImmutable(__DIR__.'/..');
