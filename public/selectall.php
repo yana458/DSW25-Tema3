@@ -57,7 +57,7 @@ $users = $stmt->fetchAll();
                 $user['register_date']
             );
             echo "<td>";
-               printf('<a href="edit.php?id=%s">Editar </a> | ',
+               printf('<a href="edit.php?id=%s">Editar &#9948; </a> | ',
                 $user['id']
         );
             printf('<a href="delete.php?id=%s">Eliminar </a>',
