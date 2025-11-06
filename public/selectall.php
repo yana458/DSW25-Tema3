@@ -1,10 +1,16 @@
 <?php
-// Pagina de prueba paea ver todas las variables de entorno. Se debe eliminar en produccion
+// Tabla con todos los usuarios
+use Dsw\Blog\Database;
 use Dotenv\Dotenv;
 
 require_once '../vendor/autoload.php';
-require_once 'conexion.php';
 
+//Patron singleton, se crea solo una conexion  por muchas veces que se intente conectar siempre será la misma conexion
+try{
+    $pdo = Database::getConnection();
+}catch (PDOException $e) {
+    die("Error al concetra la BD: ". $e->getMessage());
+}
 
 //Consulta SQL o manipulación de la base de datos
 
