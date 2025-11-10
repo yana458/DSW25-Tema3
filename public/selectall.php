@@ -4,6 +4,7 @@ use Dsw\Blog\Database;
 use Dotenv\Dotenv;
 
 require_once '../vendor/autoload.php';
+require_once 'conexion.php';
 
 //Patron singleton, se crea solo una conexion  por muchas veces que se intente conectar siempre será la misma conexion
 try{

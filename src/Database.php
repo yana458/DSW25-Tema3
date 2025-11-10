@@ -8,7 +8,7 @@ use PDOException;
 class Database
 {
     private static ?PDO $conn = null;
-
+    //Patron SIngleton (solo hay una instancia)
     public static function getConnection(): PDO {
         if(self::$conn) {
             return self::$conn;
