@@ -5,10 +5,10 @@ use DateTime;
 
 class User {
     public function __construct(
-        private int $id,
+        private ?int $id,
         private string $name,
         private string $email,
-        private DateTime $registerDate,
+        private ?DateTime $registerDate,
     ) {}
 
     public function __toString()
