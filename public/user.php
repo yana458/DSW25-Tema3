@@ -29,6 +29,7 @@ $user = $userDAO->get($id);
         printf("<h3>%s</h3>", $user->getRegisterDate()->format('d/m/Y'));
         printf("<p><a href=\"delete.php?id=%s\">Borrar</a></p>", $user->getId());
         printf("<p><a href=\"edit.php?id=%s\">Editar</a></p>", $user->getId());
+        printf("<p><a href=\"createPost.php?id=%s\"> Crear Articulo</a></p>", $user->getId());
     } else {
         echo "Usuario no encontrado.";
     }
