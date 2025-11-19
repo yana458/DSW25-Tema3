@@ -18,9 +18,6 @@ $posts = $postDAO->getAll();
 </head>
 <body>
     <h1>Listado de Artículos</h1>
-    <p>
-        <a href="">Crear un artículo</a>
-    </p>
     <table>
         <thead>
             <tr>
@@ -37,7 +34,7 @@ $posts = $postDAO->getAll();
         $user = $userDAO->get($userId);
         echo "<tr>";
         printf('<td>%s</td>', $post->getId());
-        printf('<td>%s</td>', $post->getTitle());
+        printf('<td><a href="post.php?id=%s">%s</a></td>', $post->getId(), $post->getTitle());
         printf('<td>%s</td>', $user->getName());
         echo "</tr>";
     }

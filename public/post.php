@@ -34,5 +34,12 @@ $user = $userDAO->get($userId);
     <h1><?= $post->getTitle() ?></h1>
     <p><?= $post->getBody() ?></p>
     <h3><?= $user->getName() ?></h3>
+    <p>
+        <a href="editPost.php?id=<?= $post->getId() ?>">Editar artículo</a>
+    </p>
+    <p>
+        <a href="deletePost.php?id=<?= $post->getId() ?>">Eliminar artículo</a>
+    </p>
+
 </body>
 </html>

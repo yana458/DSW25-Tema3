@@ -1,6 +1,6 @@
 <?php
 
-use Dsw\Blog\DAO\UserDAO;
+use Dsw\Blog\DAO\PostDAO;
 
 require_once '../bootstrap.php';
 
@@ -10,9 +10,9 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$userDAO = new UserDAO($conn);
-$userDAO->delete($id);
+$postDAO = new PostDAO($conn);
+$post = $postDAO->delete($id);
 
 // Vuelve a mostrar la tabla
-header('Location: users.php');
+header('Location: posts.php');
 exit();

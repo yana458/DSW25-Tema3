@@ -72,4 +72,21 @@ class PostDAO {
         $post->setId($this->conn->lastInsertId());
         return $post;
     }
+
+    public function delete(int $id): void {
+        $sql = "DELETE FROM posts WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+    }
+
+    public function update(Post $post) {
+        $sql = "UPDATE posts SET title=:title, body=:body, user_id=:user_id WHERE id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $post->getId(),
+            'title' => $post->getTitle(),
+            'body' => $post->getBody(),
+            'user_id' => $post->getUserId()
+        ]);
+    }
 }
