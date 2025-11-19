@@ -1,3 +1,7 @@
+<?php
+if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+$id = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +11,10 @@
 </head>
 <body>
     <h1>Crear Articulo</h1>
-    <form action="storePost.php" method="post">
+    <form action="storePost.php?user_id=<?= $id ?>" method="post">
         <p>
             <label for="title">Titulo:</label>
-            <input type="text" id="title" required>
+            <input type="text" name="title" id="title" required>
         </p>
         <p>
             <label for="body">Contenido</label>
@@ -22,3 +26,8 @@
     </form>
 </body>
 </html>
+<?php
+}else{
+    die("Id de usuario no válido");
+}
+?>

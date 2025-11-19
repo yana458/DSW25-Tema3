@@ -26,6 +26,6 @@ class Post {
 
     public function setId(int $id) {return $this->id = $id;}
     public function setTitle(string $title) {return $this->title = $title;}
-    public function setEmail(string $body) {return $this->body= $body;}
+    public function setBody(string $body) {return $this->body= $body;}
     public function setUserId(int $userId) { return $this->userId = $userId; }
 }
