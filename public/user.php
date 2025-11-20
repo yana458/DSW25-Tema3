@@ -13,15 +13,10 @@ $id = $_GET['id'];
 $userDAO = new UserDAO($conn);
 $user = $userDAO->get($id);
 
+$titulo = "Detalle del usuario";
+include '../includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User</title>
-</head>
-<body>
+
 <?php
     if ($user) {
         printf("<h1>%s: %s</h1>", $user->getId(), $user->getName());
@@ -33,6 +28,7 @@ $user = $userDAO->get($id);
     } else {
         echo "Usuario no encontrado.";
     }
+
+ include '../includes/footer.php';   
 ?>
-</body>
-</html>
+

@@ -16,7 +16,7 @@ class UserDAO {
         $stmt->execute(['id' => $id]);
         $register = $stmt->fetch();
         if ($register) {
-            return new User($id, $register['name'], $register['email'], new DateTime($register['register_date']));
+            return new User($id, $register['name'], $register['email'], $register['password'], $register['level'], new DateTime($register['register_date']));
         }
         return null;        
     }
@@ -28,7 +28,7 @@ class UserDAO {
         $stmt->execute();
         $registers = $stmt->fetchAll();
         foreach($registers as $register) {
-            $users[] = new User($register['id'], $register['name'], $register['email'], new DateTime($register['register_date']));
+            $users[] = new User($register['id'], $register['name'], $register['email'], $register['password'], $register['level'], new DateTime($register['register_date']));
         }
         return $users;
     }
@@ -60,5 +60,19 @@ class UserDAO {
         ]);
         $user->setId($this->conn->lastInsertId());
         return $user;
+    }
+
+    public function login($name, $password): ?User{  //devuelve un usuario o NULO
+        $sql = "SELECT * FROM users WHERE name=:name AND password=:password";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'name' => $name,
+            'password' => $password,
+        ]);
+        $register = $stmt->fetch();
+        if ($register) {
+            return new User($register['id'], $register['name'], $register['email'], $register['password'], $register['level'], new DateTime($register['register_date']));
+        }
+        return null;        
     }
 }
