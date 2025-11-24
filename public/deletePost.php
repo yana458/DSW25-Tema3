@@ -11,7 +11,18 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = $_GET['id'];
 
 $postDAO = new PostDAO($conn);
-$post = $postDAO->delete($id);
+$post = $postDAO->get($id);
+
+if ($post) {
+    // Si no es el usuario el autor del post, se redirige a prohibido. 
+    if ($user->getId() !== $post->getUserId()) {
+        header('Location: prohibido.php');
+        exit();
+    }
+    
+    $post = $postDAO->delete($id);
+}
+
 
 // Vuelve a mostrar la tabla
 header('Location: posts.php');

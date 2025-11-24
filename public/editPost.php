@@ -17,16 +17,16 @@ $post = $postDAO->get($id);
 if (!$post) {
     die('Artículo no encontrado');
 }
+
+// Si no es el usuario el autor del post, se redirige a prohibido. 
+if ($user->getId() !== $post->getUserId()) {
+    header('Location: prohibido.php');
+    exit();
+}
+
+$titulo = "Editar Artículo";
+include "../includes/header.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Editar Artículo</h1>
     <form action="updatePost.php?id=<?=  $id ?>" method="post">
         <p>
             <label for="title">Título:</label>
@@ -59,5 +59,6 @@ if (!$post) {
             <button type="submit">Modificar</button>
         </p>
     </form>
-</body>
-</html>
+<?php
+include "../includes/footer.php";
+?>
