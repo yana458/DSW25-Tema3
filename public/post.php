@@ -4,6 +4,8 @@ use Dsw\Blog\DAO\LikeDAO;
 use Dsw\Blog\DAO\PostDAO;
 use Dsw\Blog\DAO\UserDAO;
 use Dsw\Blog\DAO\CommentDAO;
+use Dsw\Blog\DAO\FavoriteDAO;
+
 
 require_once '../bootstrap.php';
 
@@ -66,8 +68,26 @@ if ($user && $user->getId() === $autorId) {
             $post->getId(),
             $buttonText
         );
+
+        // ==== FAVORITOS ====
+        $favoriteDAO = new FavoriteDAO($conn);
+        $favText = 'Guardar en favoritos';
+
+         if ($favoriteDAO->hasUserFavoritedPost($user->getId(), $post->getId())) {
+            printf('<p>Este artículo está en tus favoritos.</p>');
+            $favText = 'Quitar de favoritos';
+        }
+         printf(
+            '<form method="post" action="favoritePost.php">
+                <input type="hidden" name="post_id" value="%s">
+                <button type="submit">%s</button>
+            </form>',
+            $post->getId(),
+            $favText
+        );
+
     } else {
-        echo '<p>Inicia sesión para dar me gusta.</p>';
+        echo '<p>Inicia sesión para dar me gusta o guardar en favoritos.</p>';
     }
 }
 

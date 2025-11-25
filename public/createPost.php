@@ -21,6 +21,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <textarea name="body" id="body"></textarea>
         </p>
         <p>
+        <label for="category_id">Categoría:</label>
+        <select name="category_id" id="category_id">
+            <option value="">Sin categoría</option>
+            <?php foreach ($categories as $cat): ?>
+                <option value="<?= $cat->getId(); ?>">
+                    <?= htmlspecialchars($cat->getName()); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </p>
+        <p>
             <button type="submit">Crear</button>
         </p>
     </form>

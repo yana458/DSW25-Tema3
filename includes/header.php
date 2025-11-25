@@ -27,6 +27,10 @@ if ($user) {
             ?>
 
                 <li><a href="posts.php">Artículos</a></li>
+                <li><a href="favorites.php">Favoritos</a></li>
+                <li><a href="timeline.php">Timeline</a></li>
+                <li><a href="topPosts.php">Top Posts</a></li>
+                <li><a href="searchPost.php">Buscar</a></li>
                 <li><a href="logout.php">Logout</a></li>
             <?php
             } else {

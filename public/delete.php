@@ -3,16 +3,18 @@
 use Dsw\Blog\DAO\UserDAO;
 
 require_once '../bootstrap.php';
+accessControl($user, 'admin');
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die('El id no es válido.');
 }
 
-$id = $_GET['id'];
+$id = (int)$_GET['id'];
 
 $userDAO = new UserDAO($conn);
-$userDAO->delete($id);
+// Antes: $userDAO->delete($id);
+$userDAO->deleteCompletely($id);
 
-// Vuelve a mostrar la tabla
-header('Location: users.php');
+header('Location: users.php'); // o donde quieras
 exit();
+
